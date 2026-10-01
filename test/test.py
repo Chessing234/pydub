@@ -70,13 +70,12 @@ class GeneratedDurationTests(unittest.TestCase):
             (0.125, 8000, 1),
             (1.99, 8000, 15),
         ]:
-            with self.subTest(duration=duration, frame_rate=frame_rate):
-                silence = AudioSegment.silent(duration, frame_rate=frame_rate)
-                tone = Sine(1000, sample_rate=frame_rate).to_audio_segment(duration)
-                for segment in (silence, tone):
-                    self.assertEqual(segment.frame_count(), frames)
-                    self.assertEqual(len(segment.raw_data), frames * segment.frame_width)
-                    self.assertEqual(segment.duration_seconds, frames / float(frame_rate))
+            silence = AudioSegment.silent(duration, frame_rate=frame_rate)
+            tone = Sine(1000, sample_rate=frame_rate).to_audio_segment(duration)
+            for segment in (silence, tone):
+                self.assertEqual(segment.frame_count(), frames)
+                self.assertEqual(len(segment.raw_data), frames * segment.frame_width)
+                self.assertEqual(segment.duration_seconds, frames / float(frame_rate))
 
 
 if sys.version_info >= (3, 6):
