@@ -333,7 +333,7 @@ def mediainfo(filepath):
         "-v", "quiet",
         "-show_format",
         "-show_streams",
-        "-i", filepath
+        "-i", fsdecode(filepath)
     ]
 
     command = [prober, '-of', 'old'] + command_args
